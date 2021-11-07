@@ -1,0 +1,91 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+   <div th:replace = "header :: myheader"></div>
+
+	<title>Lista Trafostanica</title>
+</head>
+
+<body>
+
+   
+
+
+<div class="container">
+<div th:replace = "fragments/menu :: myMenu"></div>
+
+	<hr>
+	
+<!-- 	<a th:href="@{/trafos/showFormForAdd}" -->
+<!-- 		class="btn btn-primary btn-sm mb-3"> -->
+<!-- 		Dodaj trafostanicu -->
+<!-- 	</a> -->
+	
+	
+	<table class="table table-bordered table-striped" style="width: 1100px" >
+		<thead>
+			<tr>
+				<th>Broj</th>
+				<th>Adresa</th>
+				<th>Tip</th>
+				<th>Snaga</th>
+				<th>Br. izlaza</th>
+				<th>Buholc T1</th>
+				<th>Tk T1</th>
+				<th>Buholc T2</th>
+				<th>Tk T2</th>
+				<th>Baterije</th>
+				<th>Rastavljaci(vodni)</th>
+				<th>Rastavljaci(trafo)</th>
+				<th>Akcija</th>
+				
+<!-- 				<th>Buholc T3</th> -->
+<!-- 				<th>Tk T3</th> -->
+<!-- 				<th>Buholc T4</th> -->
+<!-- 				<th>Tk T4</th> -->
+			</tr>
+		</thead>
+		
+		<tbody>
+			<tr th:each="tempTrafo : ${trafos}">
+			
+				<td th:text="${tempTrafo.number}" />	
+				<td th:text="${tempTrafo.address}" />	
+				<td th:text="${tempTrafo.type}" />	
+				<td th:text="${tempTrafo.power}" />	
+				<td th:text="${tempTrafo.numberOfExits}" />	
+				<td th:text="${tempTrafo.buholcT1}" />
+				<td th:text="${tempTrafo.thermocontactT1}" />
+				<td th:text="${tempTrafo.buholcT2}" />
+				<td th:text="${tempTrafo.thermocontactT2}" />
+				<td th:text="${tempTrafo.battery}" />
+				<td th:text="${tempTrafo.disconnector.othersQuantityType}" />
+				<td th:text="${tempTrafo.disconnector.trafoQuantityType}" />
+<!-- 				<td th:text="${tempTrafo.buholcT3}" /> -->
+<!-- 				<td th:text="${tempTrafo.thermocontactT3}" /> -->
+<!-- 				<td th:text="${tempTrafo.buholcT4}" /> -->
+<!-- 				<td th:text="${tempTrafo.thermocontactT4}" /> -->
+               <td>
+			<a th:href="@{/trafos/showFormForUpdate(trafoId=${tempTrafo.number})}" 
+			class="btn  btn-sm
+			">Izmeni</a>
+    			<a th:href="@{/trafos/delete(trafoId=${tempTrafo.number})}" 
+			class="btn btn-danger btn-sm"
+			onclick="if(!(confirm('Jeste sigurni da zelite da obrisete ovu trafostanicu?'))) return false">Obrisi</a>
+				</td>
+				
+				
+			</tr>
+		</tbody>		
+	</table>
+	
+		 <INPUT type=button  class="btn btn-primary" value=" Nazad " onClick="history.back();">
+	
+</div>
+	
+</body>
+</html>
+
+
+

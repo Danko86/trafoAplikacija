@@ -1,0 +1,125 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+   <div th:replace = "header :: myheader"></div>
+
+	<title>Lista Trafostanica</title>
+</head>
+
+<body>
+
+   
+
+
+<div class="container">
+<div th:replace = "fragments/menu :: myMenu"></div>
+	<hr>
+	
+<form action="searchByPower" method="GET">
+               <input type="number" name="id" placeholder="Pretrazi po snazi" size="25cm" />
+               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                
+                <input type="submit" value="Trazi" class="btn btn-search" />
+            </form>
+	<br>
+	
+		<form action="searchByType" method="GET">
+                 <input type="text" name="type" placeholder="Pretrazi po tipu" size="25cm" />
+                
+                <input type="submit" value="Trazi" class="btn btn-search" />
+            </form>
+	<br>
+	
+		<form action="searchByBattery" method="GET">
+               <input type="text" name="battery"
+                 placeholder="Pretrazi po baterijama" size="25cm" />
+                
+                <input type="submit" value="Trazi" class="btn btn-search" />
+            </form>
+	<br>
+	
+		<form action="searchByTrafoDisconnector" method="GET">
+                 <input type="text" name="disconnector" size="25cm" placeholder="Pretrazi po trafo rastavljacu"/>
+                
+                <input type="submit" value="Trazi" class="btn btn-search" />
+            </form>
+            
+            <br>
+            <form action="searchByDisconnector" method="GET">
+             <input type="text" name="disconnector" size="25cm" placeholder="Pretrazi po vodnom rastavljacu" />
+                
+                <input type="submit" value="Trazi" class="btn btn-search" />
+            </form>
+
+                
+           
+	<br>
+	<br>
+	<table class="table table-bordered table-striped" style="width: 1100px" >
+		<thead>
+			<tr>
+			
+				<th>Broj</th>
+				<th>Adresa</th>
+				<th>Tip</th>
+				<th>Snaga</th>
+				<th>Br. izlaza</th>
+				<th>Buholc T1</th>
+				<th>Tk T1</th>
+				<th>Buholc T2</th>
+				<th>Tk T2</th>
+				<th>Baterije</th>
+				<th>Rastavljaci(vodni)</th>
+				<th>Rastavljaci(trafo)</th>
+				<th>Akcija</th>
+				
+<!-- 				<th>Buholc T3</th> -->
+<!-- 				<th>Tk T3</th> -->
+<!-- 				<th>Buholc T4</th> -->
+<!-- 				<th>Tk T4</th> -->
+			</tr>
+		</thead>
+		
+		<tbody>
+			<tr >
+			<tr th:each="tempTrafo : ${trafos}">
+				<td th:text="${tempTrafo.number}" />	
+				<td th:text="${tempTrafo.address}" />	
+				<td th:text="${tempTrafo.type}" />	
+				<td th:text="${tempTrafo.power}" />	
+				<td th:text="${tempTrafo.numberOfExits}" />	
+				<td th:text="${tempTrafo.buholcT1}" />
+				<td th:text="${tempTrafo.thermocontactT1}" />
+				<td th:text="${tempTrafo.buholcT2}" />
+				<td th:text="${tempTrafo.thermocontactT2}" />
+				<td th:text="${tempTrafo.battery}" />
+				<td th:text="${tempTrafo.disconnector.othersQuantityType}" />
+				<td th:text="${tempTrafo.disconnector.trafoQuantityType}" />
+<!-- 				<td th:text="${trafo.buholcT3}" /> -->
+<!-- 				<td th:text="${trafo.thermocontactT3}" /> -->
+<!-- 				<td th:text="${trafo.buholcT4}" /> -->
+<!-- 				<td th:text="${trafo.thermocontactT4}" /> -->
+               <td>
+			<a th:href="@{/trafos/showFormForUpdate(trafoId=${tempTrafo.number})}" 
+			class="btn  btn-sm
+			">Izmeni</a>
+    			<a th:href="@{/trafos/delete(trafoId=${tempTrafo.number})}" 
+			class="btn btn-danger btn-sm"
+			onclick="if(!(confirm('Jeste sigurni da zelite da obrisete ovu trafostanicu?'))) return false">Obrisi</a>
+				</td>
+				
+				
+			</tr>
+		</tbody>		
+	</table>
+	
+		 <INPUT type=button  class="btn btn-primary" value=" Nazad " onClick="history.back();">
+	
+</div>
+	
+</body>
+</html>
+
+
+

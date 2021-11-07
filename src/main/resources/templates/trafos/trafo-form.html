@@ -1,0 +1,117 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <div th:replace = "header :: myheader"></div>
+
+	<title>Sacuvaj trafostanicu</title>
+</head>
+
+<body>
+
+	<div class="container">
+	
+	<div th:replace = "fragments/menu :: myMenu"></div>
+	
+<!-- 		<p class="h4 mb-4" style="font-style: oblique;">Sacuvaj trafostanicu</p> -->
+	<hr>
+		<form action="#" th:action="@{/trafos/save}"
+						 th:object="${trafo}" method="POST">
+		
+<!-- 		<input type="hidden" th:field="*{number}"> -->
+		
+		Broj trafostanice:
+			<input type="number" th:field="*{number}"
+					class="form-control mb-4 col-4" placeholder="Broj">
+					<p class="alert alert-danger" th:if="${#fields.hasErrors('number')}" th:errors="*{number}"></p>
+					
+			<input type="text" th:field="*{address}"
+					class="form-control mb-4 col-4" placeholder="Adresa">
+            <p class="alert alert-danger" th:if="${#fields.hasErrors('address')}" th:errors="*{address}"></p>
+            
+			<input type="text" th:field="*{type}"
+					class="form-control mb-4 col-4" placeholder="Tip">
+			<p class="alert alert-danger" th:if="${#fields.hasErrors('type')}" th:errors="*{type}"></p>	
+		Snaga:			
+			<input type="number" th:field="*{power}"
+					class="form-control mb-4 col-4" placeholder="Snaga">		
+			<p class="alert alert-danger" th:if="${#fields.hasErrors('power')}" th:errors="*{power}"></p>	
+					
+			<input type="text" th:field="*{numberOfExits}"
+					class="form-control mb-4 col-4" placeholder="Broj izlaza">	
+			<p class="alert alert-danger" th:if="${#fields.hasErrors('numberOfExits')}" th:errors="*{numberOfExits}"></p>		
+					
+			<input type="text" th:field="*{buholcT1}"
+					class="form-control mb-4 col-4" placeholder="Buholc T1">	
+			<p class="alert alert-danger" th:if="${#fields.hasErrors('buholcT1')}" th:errors="*{buholcT1}"></p>	
+					
+			<input type="text" th:field="*{thermocontactT1}"
+					class="form-control mb-4 col-4" placeholder="Termokontakt T1">	
+			<p class="alert alert-danger" th:if="${#fields.hasErrors('thermocontactT1')}" th:errors="*{thermocontactT1}"></p>			
+					
+			<input type="text" th:field="*{buholcT2}"
+					class="form-control mb-4 col-4" placeholder="Buholc T2">	
+			<p class="alert alert-danger" th:if="${#fields.hasErrors('buholcT1')}" th:errors="*{buholcT2}"></p>		
+					
+			<input type="text" th:field="*{thermocontactT2}"
+					class="form-control mb-4 col-4" placeholder="Termokontakt T2">	
+			<p class="alert alert-danger" th:if="${#fields.hasErrors('thermocontactT2')}" th:errors="*{thermocontactT2}"></p>			
+					
+					
+			<input type="number" value="-1" th:field="*{battery.quantity}"      
+					class="form-control mb-4 col-4" placeholder="Broj baterija">	
+			<p class="alert alert-danger" th:if="${#fields.hasErrors('battery.quantity')}" th:errors="*{battery.quantity}"></p>			
+					
+			<input type="number" value="-1" th:field="*{battery.power}"
+					class="form-control mb-4 col-4" placeholder="Snaga baterija">
+			<p class="alert alert-danger" th:if="${#fields.hasErrors('battery.power')}" th:errors="*{battery.power}"></p>			
+					
+			<input type="text" th:field="*{battery.type}"
+					class="form-control mb-4 col-4" placeholder="Tip baterija">	
+			<p class="alert alert-danger" th:if="${#fields.hasErrors('battery.type')}" th:errors="*{battery.type}"></p>			
+					
+					
+			<input type="text" th:field="*{disconnector.trafoQuantityType}"
+					class="form-control mb-4 col-4" placeholder="Trafo celija: kolicina i tip">	
+			<p class="alert alert-danger" th:if="${#fields.hasErrors('disconnector.trafoQuantityType')}" th:errors="*{disconnector.trafoQuantityType}"></p>			
+					
+			<input type="text" th:field="*{disconnector.othersQuantityType}"
+					class="form-control mb-4 col-4" placeholder="Vodna celija: kolicina i tip">
+			<p class="alert alert-danger" th:if="${#fields.hasErrors('disconnector.othersQuantityType')}" th:errors="*{disconnector.othersQuantityType}"></p>			
+					
+										
+					
+<!-- 			<input type="text" th:field="*{buholcT3}" -->
+<!-- 					class="form-control mb-4 col-4" placeholder="Buholc T3">	 -->
+					
+<!-- 			<input type="text" th:field="*{thermocontactT3}" -->
+<!-- 					class="form-control mb-4 col-4" placeholder="Termokontakt T3">	 -->
+					
+<!-- 			<input type="text" th:field="*{buholcT4}" -->
+<!-- 					class="form-control mb-4 col-4" placeholder="Buholc T4">	 -->
+					
+<!-- 			<input type="text" th:field="*{thermocontactT4}" -->
+<!-- 					class="form-control mb-4 col-4" placeholder="Termokontakt T4">		 -->
+				
+ 			<button type="submit" class="btn btn-info col-2">Sacuvaj</button> 
+						
+		</form>
+	
+		<hr>
+			 <INPUT type=button  class="btn btn-primary" value=" Nazad " onClick="history.back();">
+
+		
+	</div>
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+

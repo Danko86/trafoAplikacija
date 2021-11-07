@@ -1,0 +1,73 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <div th:replace = "header :: myheader"></div>
+
+	<title>Sacuvaj trafostanicu</title>
+</head>
+
+<body>
+
+	<div class="container">
+	
+	<div th:replace = "fragments/menu :: myMenu"></div>
+				
+		
+		<hr>
+	
+		<form action="#" th:action="@{/works/save}"
+						 th:object="${work}" method="POST">
+		
+		Broj naloga:
+			<input type="number"  th:field="*{orderNumber}"
+					class="form-control mb-4 col-4" placeholder="Broj naloga">
+					
+			<input type="text" th:field="*{nameOfTheWork}"
+					class="form-control mb-4 col-4" placeholder="Naziv">
+			<p class="alert alert-danger" th:if="${#fields.hasErrors('nameOfTheWork')}" th:errors="*{nameOfTheWork}"></p>		
+
+      Maticni broj montera:
+			<input type="number" th:field="*{monter.personalNumber}"
+					class="form-control mb-4 col-4" placeholder="Vodeci monter">
+			<p class="alert alert-danger" th:if="${#fields.hasErrors('monter.personalNumber')}" th:errors="*{monter.personalNumber}"></p>		
+	  Maticni brojevi montera:				
+			<input type="text" th:field="*{otherMonters}"
+					class="form-control mb-4 col-4" placeholder="Ostali monteri">	
+			<p class="alert alert-danger" th:if="${#fields.hasErrors('otherMonters')}" th:errors="*{otherMonters}"></p>			
+			
+			<input type="number" th:field="*{trafo.number}"
+					class="form-control mb-4 col-4" placeholder="Broj trafoa">
+			<p class="alert alert-danger" th:if="${#fields.hasErrors('trafo.number')}" th:errors="*{trafo.number}"></p>		
+					
+			<input type="date" th:field="*{date}"
+					class="form-control mb-4 col-4" placeholder="Datum">
+					
+			<textarea rows="7" cols="80" th:field="*{report}"
+					class="form-control mb-4 col-4" placeholder="Ivestaj">			
+					</textarea>					
+			<p class="alert alert-danger" th:if="${#fields.hasErrors('report')}" th:errors="*{report}"></p>		
+					
+				
+ 			<button type="submit" class="btn btn-info col-2">Save</button> 
+						
+		</form>
+	
+		<hr>
+			 <INPUT type=button  class="btn btn-primary" value=" Nazad " onClick="history.back();">
+
+		
+	</div>
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+

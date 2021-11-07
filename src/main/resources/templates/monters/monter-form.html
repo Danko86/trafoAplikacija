@@ -1,0 +1,60 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <div th:replace = "header :: myheader"></div>
+
+	<title>Sacuvaj montera</title>
+</head>
+
+<body>
+
+	<div class="container">
+	
+		<div th:replace = "fragments/menu :: myMenu"></div>
+
+		<hr>
+	
+		<form action="#" th:action="@{/monters/save}"
+						 th:object="${monter}" method="POST">
+		
+			<input type="number"  th:field="*{personalNumber}"
+					class="form-control mb-4 col-4" placeholder="Maticni broj">
+			<p class="alert alert-danger" th:if="${#fields.hasErrors('personalNumber')}" th:errors="*{personalNumber}"></p>		
+
+
+			<input type="text" th:field="*{firstName}"
+					class="form-control mb-4 col-4" placeholder="Ime">
+			<p class="alert alert-danger" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"></p>		
+
+			<input type="text" th:field="*{lastName}"
+					class="form-control mb-4 col-4" placeholder="Prezime">
+			<p class="alert alert-danger" th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"></p>		
+					
+			<input type="number" th:field="*{daysOff}"
+					class="form-control mb-4 col-4" placeholder="Slobodni dani">	
+			<p class="alert alert-danger" th:if="${#fields.hasErrors('daysOff')}" th:errors="*{daysOff}"></p>			
+					
+				
+ 			<button type="submit" class="btn btn-info col-2">Save</button> 
+						
+		</form>
+	
+		<hr>
+			 <INPUT type=button  class="btn btn-primary" value=" Nazad " onClick="history.back();">
+
+		
+	</div>
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+

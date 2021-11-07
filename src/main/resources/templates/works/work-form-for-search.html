@@ -1,0 +1,52 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+   <div th:replace = "header :: myheader"></div>
+
+	<title>Lista Trafostanica</title>
+</head>
+
+<body>
+
+<div class="container">
+
+<div th:replace = "fragments/menu :: myMenu"></div>
+
+	<hr>
+	
+	<form action="search" method="GET">
+                <input type="number" name="id" placeholder="Ukucaj broj trafostanice" size="25cm" />
+                
+                <input type="submit" value="Trazi" class="btn btn-search" />
+            </form>
+            <br>
+
+	<table class="table table-bordered table-striped" style="width: 1100px ">
+	
+		<thead>
+			<tr>
+				<th>Broj naloga</th>
+				<th>Naziv</th>
+				<th>Vodeci monter</th>
+				<th>Ostali monteri</th>
+				<th>Broj TS</th>
+				<th>Datum</th>
+				<th>Izvestaj</th>
+				<th>Akcija</th>
+			</tr>
+		</thead>
+		
+		<tbody>
+			
+		</tbody>		
+	</table>
+	
+	 <INPUT type=button  class="btn btn-primary" value=" Nazad " onClick="history.back();">
+</div>
+	
+</body>
+</html>
+
+
+

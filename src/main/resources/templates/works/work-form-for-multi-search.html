@@ -1,0 +1,80 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+   <div th:replace = "header :: myheader"></div>
+
+	<title>Lista Trafostanica</title>
+</head>
+
+<body>
+
+   
+
+
+<div class="container">
+<div th:replace = "fragments/menu :: myMenu"></div>
+	<hr>
+	
+<!-- 	<a th:href="@{/trafos/showFormForAdd}" -->
+<!-- 		class="btn btn-primary btn-sm mb-3"> -->
+<!-- 		Dodaj trafostanicu -->
+<!-- 	</a> -->
+	
+	<form action="searchByMainMonter" method="GET">
+                <input type="number" name="number" placeholder="Pretrazi po vod. monteru" size="25cm"/>
+                
+                <input type="submit" value="Trazi" class="btn btn-search" />
+            </form>
+	<br>
+	
+		<form action="searchByMonter" method="GET">
+                 <input type="text" name="number" placeholder="Pretrazi po monteru" size="25cm" />
+                
+                <input type="submit" value="Trazi" class="btn btn-search" />
+            </form>
+	<br>
+	
+		
+	
+	<table class="table table-bordered table-striped" style="width: 1100px ">
+	
+		<thead>
+			<tr>
+				<th>Broj naloga</th>
+				<th>Naziv</th>
+				<th>Vodeci monter</th>
+				<th>Ostali monteri</th>
+				<th>Broj TS</th>
+				<th>Datum</th>
+				<th>Izvestaj</th>
+				<th>Akcija</th>
+			</tr>
+		</thead>
+		
+		<tbody>
+			<tr>
+			<tr th:each="tempWork : ${works}">
+				<td th:text="${tempWork .orderNumber}" />	
+				<td th:text="${tempWork .nameOfTheWork}" />	
+ 				<td th:text="${tempWork .monter.personalNumber}" /> 
+ 				<td th:text="${tempWork .otherMonters}" /> 
+				<td th:text="${tempWork .trafo.number}" />	
+				<td th:text="${tempWork .date}" />
+				<td th:text="${tempWork .report}" />
+				<td>
+				<a th:href="@{/works/showFormForUpdate(workId=${tempWork .id})}" 
+			class="btn btn-inf btn=sm">Izmeni</a>
+    			<a th:href="@{/works/delete(workId=${tempWork .id})}" 
+			class="btn btn-danger btn-sm"
+			onclick="if(!(confirm('Jeste sigurni da zelite da obrisete ovaj rad?'))) return false">Obrisi</a>
+			</td>
+			</tr>
+		</tbody>		
+	</table>
+	
+	 <INPUT type=button  class="btn btn-primary" value=" Nazad " onClick="history.back();">
+</div>
+	
+</body>
+</html>
